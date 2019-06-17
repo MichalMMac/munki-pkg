@@ -315,7 +315,7 @@ You can authorize this once clicking *Allow* or permanently clicking *Always All
 `munki-pkg` basically does following:
 
 1. Uploads the package to Apple notary service using `xcrun altool --notarize-app --primary-bundle-id "com.github.munki.pkg.munki-kickstart" --username "john.appleseed@apple.com" --password "@keychain:AC_PASSWORD" --file munki_kickstart.pkg`
-2. Checks periodicaly state of notatarization process using `xcrun altool --notarization-info <UUID> --username "john.appleseed@apple.com" --password "@keychain:AC_PASSWORD"`
+2. Checks periodically state of notarization process using `xcrun altool --notarization-info <UUID> --username "john.appleseed@apple.com" --password "@keychain:AC_PASSWORD"`
 3. If notarization was successful `munki-pkg` staples the package using `xcrun stapler staple munki_kickstart.pkg`
 
 There is a time delay between successful upload of a signed package to the notary service and notarization result from the service.
