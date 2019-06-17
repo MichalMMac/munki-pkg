@@ -677,7 +677,7 @@ def upload_to_notary(build_info, options):
         '--primary-bundle-id',
         build_info['notarization_info'].get(
             'primary_bundle_id', build_info['identifier']
-        ),
+        ).replace('_', '-'),
         '--username',
         build_info['notarization_info']['username'],
         '--password',
