@@ -791,7 +791,14 @@ def wait_for_notarization(request_uuid, build_info, options):
         sleep_time += STAPLE_SLEEP
 
         if notarization_done(state, sleep_time, options):
-            break
+            return True
+
+    print(
+        "munkipkg: Timeout EXCEEDED when waiting for the notarization to complete. "
+        "You can manually staple the package later if notarization is successful.",
+        file=sys.stderr,
+    )
+    return False
 
 
 def staple(build_info, options):
@@ -878,8 +885,9 @@ def build(project_dir, options):
         if 'notarization_info' in build_info and not options.skip_notarization:
             try:
                 request_uuid = upload_to_notary(build_info, options)
-                if not options.skip_stapling:
-                    wait_for_notarization(request_uuid, build_info, options)
+                if not options.skip_stapling and wait_for_notarization(
+                    request_uuid, build_info, options
+                ):
                     staple(build_info, options)
             except MunkiPkgError as err:
                 print("ERROR: %s" % err, file=sys.stderr)
