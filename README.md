@@ -265,7 +265,7 @@ See the **SIGNED PACKAGES** section of the man page for `pkgbuild` or the **SIGN
 
 - Please read the [Customizing the Notarization Workflow](https://developer.apple.com/documentation/security/notarizing_your_app_before_distribution/customizing_the_notarization_workflow) web page before you start notarizing your packages.
 - Xcode 10 (or newer) is **required**.  If you have more than one version of Xcode installed on your Mac, be sure to use the xcode-select utility to choose the appropriate version: `sudo xcode-select -s /path/to/Xcode10.app`.
-- Unproxied network access to the Apple infrastruture (Usually `17.0.0.0/8` network) is required.
+- Unproxied network access to the Apple infrastructure (Usually `17.0.0.0/8` network) is required.
 - Notarization tool tries to notarize not only the package but also the package payload. All code in the payload (including but not limited to app bundles, frameworks, kernel extensions) needs to be properly signed with the hardened runtime restrictions in order to be notarized. Please read Apple Developer documentation for more information.
 
 You may notarize **SIGNED PACKAGES** as part of the build process by adding a `notarization_info` dictionary to the build\_info.plist:
@@ -299,7 +299,7 @@ Keys/values of the `notarization_info` dictionary:
 
 | Key               | Type    | Required | Description |
 | ----------------- | ------- | -------- | ----------- |
-| username          | String  | Yes      | Login email adress of your developer Apple ID |
+| username          | String  | Yes      | Login email address of your developer Apple ID |
 | password          | String  | Yes      | 2FA app specific password. For information about the password and saving it to the login keychain see the web page [Customizing the Notarization Workflow](https://developer.apple.com/documentation/security/notarizing_your_app_before_distribution/customizing_the_notarization_workflow) |
 | asc_provider      | String  | No       | Only needed when a user account is associated with multiple providers |
 | primary_bundle_id | String  | No       | Defaults to `identifier`. Whether specified or not underscore characters are always automatically converted to hyphens since Apple notary service does not like underscores |
@@ -308,7 +308,7 @@ Keys/values of the `notarization_info` dictionary:
 **About accessing password in keychain**
 
 If you configure `munki-pkg` to use the password from the login keychain user is going to be prompted to allow access to the password.
-You can authorize this once clicking *Allow* or permenently cliking *Always Allow*.
+You can authorize this once clicking *Allow* or permanently clicking *Always Allow*.
 
 **About stapling**
 
